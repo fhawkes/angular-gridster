@@ -949,6 +949,7 @@
 							}
 
 							updateHeight();
+							updateWidth();
 						};
 
 						// update grid items on config changes
@@ -966,7 +967,12 @@
 							$elem.css('height', (gridster.gridHeight * gridster.curRowHeight) + (gridster.outerMargin ? gridster.margins[0] : -gridster.margins[0]) + 'px');
 						};
 
+						var updateWidth = function() {
+							$elem.css('width', gridster.curWidth + 'px');
+						};
+
 						scope.$watch('gridster.gridHeight', updateHeight);
+						scope.$watch('gridster.curWidth', updateWidth);
 
 						scope.$watch('gridster.movingItem', function() {
 							gridster.updateHeight(gridster.movingItem ? gridster.movingItem.sizeY : 0);
